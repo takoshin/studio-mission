@@ -1,0 +1,56 @@
+<section class="hero is-dark">
+  <div class="hero-body, is-small">
+    <div class="container">
+      <h1 class="title has-text-grey-light is-size-2">
+        定期会員
+      </h1>
+      <div class="search-form">
+        <%= form_with(scope: :search, url: customers_path, method: :get, local: true) do |f| %>
+          <div class="field">
+            <span>
+              <%= f.label(:number, "会員番号") %>
+              <%= f.text_field:number, value: @search_params[:number] %>
+            </span>
+            <span>
+              <%= f.label(:customername, "名前") %>
+              <%= f.text_field:customername, value: @search_params[:customername] %>
+            </span>
+            <span>
+              <%= f.label(:email, "メールアドレス") %>
+              <%= f.text_field:email, value: @search_params[:email] %>
+            </span>
+            <span>
+              <%= f.submit '検索' %>
+            </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% if @customers %>
+  <section class="section">
+    <div class="container">
+      <div class="columns is-multiline">
+        <% @customers.each do |customer| %>
+          <div class="column is-3">
+            <div class="card">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <div class="body">
+                      会員番号：<%= customer.number %>
+                    </div>
+                    <div class="body">
+                      名前：<%=link_to customer.customername, customer_path(customer) %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

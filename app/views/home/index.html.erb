@@ -1,0 +1,61 @@
+<% if customer_signed_in? %>
+  <section class="section">
+    <article class="media">
+      <div class="media-content">
+        <div class="content has-text-centered">
+          <p>
+            <strong class="is-size-1" style="font-family: cursive;">studiomission</strong>
+          </p>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-5">
+            <br>
+            <%= link_to "新規定期会員", new_customer_registration_path, class: "button is-warning is-fullwidth" %>
+            <br>
+            <%= link_to "定期予約", reservations_path, class: "button is-warning is-fullwidth" %>
+
+          </div>
+        </div>
+      </div>
+    </article>
+    <br>
+    <div class="columns is-centered">
+      <div class="column">
+        <figure>
+          <div class="main-image"></div>
+        </figure>
+      </div>
+    </div>
+  </section>
+<% else %>
+  <section class="section">
+    <article class="media">
+      <div class="media-content">
+        <div class="content has-text-centered">
+          <p>
+            <strong class="is-size-1" style="font-family: cursive;">studio mission</strong>
+          </p>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-5">
+            <br>
+            <%= link_to "新規定期会員", new_customer_registration_path, class: "button is-warning is-fullwidth" %>
+            <br>
+            <%= link_to "定期会員一覧", customers_path, class: "button is-warning is-fullwidth" %>
+            <br>
+            <%= link_to "定期予約一覧", reservations_path, class: "button is-warning is-fullwidth" %>
+
+          </div>
+        </div>
+      </div>
+    </article>
+    <br>
+    <div class="columns is-centered">
+      <div class="column">
+        <figure>
+          <div class="main-image"></div>
+        </figure>
+      </div>
+    </div>
+  </section>
+<% end %>

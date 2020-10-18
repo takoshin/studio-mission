@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 1
+  day_of_week: MyString
+  room: MyString
+  time_s: MyString
+  time_e: MyString
+
+two:
+  customer_id: 1
+  day_of_week: MyString
+  room: MyString
+  time_s: MyString
+  time_e: MyString

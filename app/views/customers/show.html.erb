@@ -1,0 +1,59 @@
+<section class="hero is-dark">
+  <div class="hero-body, is-small">
+    <div class="container">
+      <h1 class="title has-text-grey-light is-size-2">
+        詳細
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <table class="table is-fullwidth">
+              <tr>
+                <td nowrap class="is-size-4">
+                  <strong><%= @customer.customername %></strong>
+                </td>
+                <td class="is-size-5">
+                  <%= @customer.email %>
+                </td>
+                <td>
+                    <%= link_to "編集", edit_customer_path(@customer), class: "button is-primary" %>
+                </td>
+                <td>
+                  <p class="control">
+                    <%= link_to "ログイン", customer_session_path, class: "button is-primary" %>
+                  </p>
+                </td>
+                <td nowrap >
+                  <p class="control">
+                    <%= link_to customer_path(@customer), method: :delete, data: {confirm: "削除しますか？"}, class: "button is-danger" do %>
+                      <span class="panel-icon">
+                      <i class="fas fa-trash"></i>
+                      </span>
+                      <span>
+                        削除する
+                      </span>
+                    <% end %>
+                  </p>
+                </td>
+              </tr>
+            </table>
+            <table class="table is-fullwidth">
+              <tr>
+                <td>
+                  <%= @customer.profile %>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

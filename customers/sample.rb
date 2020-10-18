@@ -1,0 +1,9 @@
+$number = 6835
+$name = "takou shin"
+$day = 5
+$room = 1
+$time_s = 1
+$time_e = 4
+$mounth = 6
+$i = 5
+$week = 0
