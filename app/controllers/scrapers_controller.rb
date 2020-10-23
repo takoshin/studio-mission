@@ -3,7 +3,7 @@ class ScrapersController < ApplicationController
   end
 
   def new
-   demoscraping
+    scraping
   end
 
   def create
@@ -201,7 +201,7 @@ class ScrapersController < ApplicationController
       client.read_timeout = 600
       chrome_capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
           chromeOptions: {
-             args: ["--headless", "--no-sandbox", "--single-process", "--disable-setuid-sandbox"],
+             args: ["--headless", "--no-sandbox"],
             w3c: false
           }
         )
@@ -309,10 +309,6 @@ class ScrapersController < ApplicationController
         -------------------------------------------------------------------------"
         d.quit
       rescue
-        puts"
-        --------------------------------------
-        #予約が取れませんでした。
-        --------------------------------------"
         d.quit
       end
     end
