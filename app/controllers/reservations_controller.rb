@@ -24,6 +24,12 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
   end
 
+  def update
+    @reservation = Reservation.find(params[:id])
+    @reservation.update(reservation_params)
+    redirect_to reservation_path(@reservation)
+  end
+
   def destroy
     reservation = Reservation.find(params[:id])
     reservation.destroy
@@ -33,8 +39,8 @@ class ReservationsController < ApplicationController
 
   private
 
-  def reseration_params
-    params.require(:reservation).permit(:day_of_week, :room, :time_s, :time_e)
+  def reservation_params
+    params.require(:reservation).permit(:day_of_week, :room, :time_s, :time_e, :count, :option, :number_of_option)
   end
 
   def reservation_search_params

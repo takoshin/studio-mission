@@ -506,7 +506,7 @@ class ScrapersController < ApplicationController
       client.read_timeout = 600
       chrome_capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
           chromeOptions: {
-             args: ["--headless", "--no-sandbox", "--single-process", "--disable-setuid-sandbox"],
+             args: ["--headless", "--no-sandbox"],
             w3c: false
           }
         )

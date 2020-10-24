@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(version: 2020_09_17_164853) do
     t.string "room"
     t.string "time_s"
     t.string "time_e"
+    t.string "option"
+    t.string "number_of_option"
+    t.string "count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

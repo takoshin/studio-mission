@@ -45,9 +45,9 @@
                   <div class="media-content">
                     <div class="body"><%=link_to reservation.customer.number, reservation_path(reservation) %>:<%=link_to reservation.customer.customername, reservation_path(reservation) %></div>
                     <div class="body"><%= reservation.day_of_week %>曜日</div>
-                    <div class="body">部屋:<%= reservation.room %></div>
                     <div class="body"><%= reservation.time_s %>〜<%= reservation.time_e %></div>
-                    
+                    <div class="body">部屋:<%= reservation.room %></div>
+                    <div class="body">OP:<%= reservation.option %>×<%= reservation.number_of_option %></div>
                   </div>
                 </div>
 

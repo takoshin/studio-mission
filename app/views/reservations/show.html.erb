@@ -20,18 +20,26 @@
                   <th>予約内容</th>
                 </tr>
                 <tr>
-                  <td><%= @reservation.day_of_week %></td>
-                  <td><%= @reservation.room %></td>
-                  <td><%= @reservation.time_s %>〜<%= @reservation.time_e %></td>
+                  <td><%= @reservation.day_of_week %>曜日</td>
+                </tr>
+                  <td>予約時間: <%= @reservation.time_s %>〜<%= @reservation.time_e %></td>
+                <tr>
+                  <td>部屋番号: <%= @reservation.room %></td>
+                </tr>
+                <tr>
+                  <td>OP:<%= @reservation.option %>×<%= @reservation.number_of_option %></td>
+                </tr>
+                <tr>
+                </tr>
                   <td><%= link_to "編集", edit_reservation_path(@reservation), class: "button is-primary" %></td>
                   <td>
                     <p class="control">
-                    <%= link_to reservation_path(@reservation), method: :delete, data: {confirm: "削除しますか？"}, class: "button is-danger" do %>
-                    <span class="panel-icon">
-                    <i class="fas fa-trash"></i>
-                    </span>
-                    削除
-                    <% end %>
+                      <%= link_to reservation_path(@reservation), method: :delete, data: {confirm: "削除しますか？"}, class: "button is-danger" do %>
+                        <span class="panel-icon">
+                          <i class="fas fa-trash"></i>
+                        </span>
+                      削除
+                      <% end %>
                     </p>
                   </td>
                 </tr>
