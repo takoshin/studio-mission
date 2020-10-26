@@ -184,6 +184,47 @@ class ScrapersController < ApplicationController
         @time_s = 31
       end
 
+      if reserve.option == "ブルーレイデッキ"
+        @option = 2
+      elsif reserve.option == "ワイヤレスマイク"
+        @option = 3
+      elsif reserve.option == "DJセット"
+        @option = 4
+      elsif reserve.option == "マイク"
+        @option = 5
+      elsif reserve.option == "長机"
+        @option = 6
+      elsif reserve.option == "椅子"
+        @option = 7
+      elsif reserve.option == "ホワイトボード"
+        @option = 8
+      elsif reserve.option == "譜面台"
+        @option = 9
+      elsif reserve.option == "マイクスタンド"
+        @option = 10
+      elsif reserve.option == "タップ板"
+        @option = 11
+      elsif reserve.option == "ヨガマット"
+        @option = 12
+      elsif reserve.option == "キーボード"
+        @option = 13
+      elsif reserve.option == "パーテーション"
+        @option = 14
+      elsif reserve.option == "バレエバー3m"
+        @option = 15
+      elsif reserve.option == "バレエバー6m"
+        @option = 16
+      elsif reserve.option == "リングライト"
+        @option = 19
+      elsif reserve.option == "カラーライト"
+        @option = 20
+      elsif reserve.option == "フロント台"
+        @option = 21
+      end
+
+
+
+
       @time_e = @time_s + 1
 
       #--------------------------------------------------------------
@@ -282,6 +323,7 @@ class ScrapersController < ApplicationController
             sleep 1
             d.find_element(:xpath, '/html/body/div[2]/div/div/form/div[2]/ul/li/button').click
             sleep 1
+            if reserve.option
             d.find_element(:name, 'confirm').click
             sleep 1
             d.find_element(:class, 'btn-reserve').click
