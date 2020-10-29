@@ -254,7 +254,7 @@ class ScrapersController < ApplicationController
           http_client: client
         )
         d.get "https://resv.studio-mission.com/admin/login"
-        sleep 1
+        # sleep 1
       rescue
         retry
       end
@@ -268,19 +268,19 @@ class ScrapersController < ApplicationController
       login_pass.clear
       login_pass.send_key('Ts1997522')
       d.find_element(:class, 'btn').click
-      sleep 1
+      # sleep 1
         #お客様のアカウントにログイン
       d.find_element(:xpath, '/html/body/div/div[2]/ul/li[6]/a').click
-      sleep 1
+      # sleep 1
       number_blank = d.find_element(:xpath, '/html/body/div/div[3]/div/div[1]/form/table/tbody/tr[1]/td/input')
       number_blank.clear
       number_blank.send_key(reserve.customer.number)
       d.find_element(:class, 'btn').click
-      sleep 1
+      # sleep 1
       d.find_element(:xpath, '/html/body/div/div[3]/div/table/tbody/tr/td[2]/a').click
-      sleep 1
+      # sleep 1
       d.find_element(:class, 'btn-login').click
-      sleep 1
+      # sleep 1
       puts "
         --------------------------------------
         #{reserve.customer.customername}にログインしました！
@@ -289,7 +289,7 @@ class ScrapersController < ApplicationController
       window = d.window_handles.last
       d.switch_to.window(window)
       d.execute_script('window.scroll(0,1000);')
-      sleep 1
+      # sleep 1
       d.find_element(:class, 'btn-reserve').click
       puts "
         -----------------
@@ -298,13 +298,13 @@ class ScrapersController < ApplicationController
       #-----------------------------------------------------------------------------------------------------------------------------------------
       #予約開始
       begin
-        sleep 1
+        # sleep 1
         i.times{| num |
           @week += 1
           d.execute_script('window.scroll(1000,0);')
-          sleep 1
+          # sleep 1
           d.find_element(:class, 'fa-calendar').click
-          sleep 1
+          # sleep 1
           month.times{| num |
             d.find_element(:class, 'picker__nav--next').click
           }
@@ -314,34 +314,38 @@ class ScrapersController < ApplicationController
           b = daily_e.delete("^0-9")
           c = d.current_url.delete("^0-9")
           if a <= c && c <= b
-            sleep 1
+            # sleep 1
             d.find_element(:xpath, "/html/body/div[2]/div/div/div[3]/ul[#{@room}]/li[#{@time_s}]/label").click
-            sleep 1
+            # sleep 1
             d.find_element(:xpath , "/html/body/div[2]/div/div/div[3]/ul[#{@room}]/li[#{@time_e}]/label").click
-            sleep 1
+            # sleep 1
             d.execute_script('window.scroll(0,1000);')
-            sleep 1
+            # sleep 1
             d.find_element(:xpath, '/html/body/div[2]/div/div/form/div[2]/ul/li/button').click
-            sleep 1
-            if reserve.option
+            # sleep 1
+            if reserve.option.blank? == false
+              select = Selenium::WebDriver::Support::Select.new(d.find_element(:name, "params[options][#{@option}]"))
+              select.select_by(:value, "#{reserve.number_of_option}")
+            end
+            # sleep 1
             d.find_element(:name, 'confirm').click
-            sleep 1
+            # sleep 1
             d.find_element(:class, 'btn-reserve').click
-            sleep 1
+            # sleep 1
             d.find_element(:xpath, '/html/body/div/div/div/div[3]/ul/li[3]/a').click
-            sleep 1
+            # sleep 1
           elsif b < c
             d.quit
             break
           else
             d.execute_script('window.scroll(1000,0);')
-            sleep 1
+            # sleep 1
             d.find_element(:class, 'fa-calendar').click
-            sleep 1
+            # sleep 1
             5.times{| num |
               d.find_element(:class, 'picker__nav--prev').click
             }
-            sleep 1
+            # sleep 1
             d.find_element(:xpath, "/html/body/div[2]/div/div/div[1]/div[2]/div/div/div/div/div/table/tbody/tr[2]/td[#{@day}]/div").click
           end
         }
@@ -560,7 +564,7 @@ class ScrapersController < ApplicationController
           http_client: client
         )
         d.get "https://resv.studio-mission.com/admin/login"
-        sleep 1
+        # sleep 1
       rescue
         retry
       end
@@ -574,19 +578,19 @@ class ScrapersController < ApplicationController
       login_pass.clear
       login_pass.send_key('Ts1997522')
       d.find_element(:class, 'btn').click
-      sleep 1
+      # sleep 1
         #お客様のアカウントにログイン
       d.find_element(:xpath, '/html/body/div/div[2]/ul/li[6]/a').click
-      sleep 1
+      # sleep 1
       number_blank = d.find_element(:xpath, '/html/body/div/div[3]/div/div[1]/form/table/tbody/tr[1]/td/input')
       number_blank.clear
       number_blank.send_key(reserve.customer.number)
       d.find_element(:class, 'btn').click
-      sleep 1
+      # sleep 1
       d.find_element(:xpath, '/html/body/div/div[3]/div/table/tbody/tr/td[2]/a').click
-      sleep 1
+      # sleep 1
       d.find_element(:class, 'btn-login').click
-      sleep 1
+      # sleep 1
       puts "
         --------------------------------------
         #{reserve.customer.number}:#{reserve.customer.customername}様にログインしました！
@@ -595,7 +599,7 @@ class ScrapersController < ApplicationController
       window = d.window_handles.last
       d.switch_to.window(window)
       d.execute_script('window.scroll(0,1000);')
-      sleep 1
+      # sleep 1
       d.find_element(:class, 'btn-reserve').click
       puts "
         -----------------
@@ -604,13 +608,13 @@ class ScrapersController < ApplicationController
       #-----------------------------------------------------------------------------------------------------------------------------------------
       #予約開始
       begin
-        sleep 1
+        # sleep 1
         i.times{| num |
           @week += 1
           d.execute_script('window.scroll(1000,0);')
-          sleep 1
+          # sleep 1
           d.find_element(:class, 'fa-calendar').click
-          sleep 1
+          # sleep 1
           month.times{| num |
             d.find_element(:class, 'picker__nav--next').click
           }
@@ -620,38 +624,38 @@ class ScrapersController < ApplicationController
           b = daily_e.delete("^0-9")
           c = d.current_url.delete("^0-9")
           if a <= c && c <= b
-            sleep 1
+            # sleep 1
             d.find_element(:xpath, "/html/body/div[2]/div/div/div[3]/ul[#{@room}]/li[#{@time_s}]/label").click
-            sleep 1
+            # sleep 1
             d.find_element(:xpath , "/html/body/div[2]/div/div/div[3]/ul[#{@room}]/li[#{@time_e}]/label").click
-            sleep 1
+            # sleep 1
             d.execute_script('window.scroll(0,1000);')
-            sleep 1
+            # sleep 1
             d.find_element(:xpath, '/html/body/div[2]/div/div/form/div[2]/ul/li/button').click
-            sleep 1
+            # sleep 1
             d.navigate.back
             d.execute_script('window.scroll(1000,0);')
-            sleep 1
+            # sleep 1
             d.find_element(:class, 'fa-calendar').click
-            sleep 1
+            # sleep 1
             5.times{| num |
               d.find_element(:class, 'picker__nav--prev').click
             }
-            sleep 1
+            # sleep 1
             d.find_element(:xpath, "/html/body/div[2]/div/div/div[1]/div[2]/div/div/div/div/div/table/tbody/tr[2]/td[#{@day}]/div").click
-            sleep 1
+            # sleep 1
           elsif b < c
             d.quit
             break
           else
             d.execute_script('window.scroll(1000,0);')
-            sleep 1
+            # sleep 1
             d.find_element(:class, 'fa-calendar').click
-            sleep 1
+            # sleep 1
             5.times{| num |
               d.find_element(:class, 'picker__nav--prev').click
             }
-            sleep 1
+            # sleep 1
             d.find_element(:xpath, "/html/body/div[2]/div/div/div[1]/div[2]/div/div/div/div/div/table/tbody/tr[2]/td[#{@day}]/div").click
           end
         }

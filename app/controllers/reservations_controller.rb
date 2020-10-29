@@ -13,7 +13,7 @@ class ReservationsController < ApplicationController
   end
   
   def create
-    @reservation = Reservation.new(reseration_params)
+    @reservation = Reservation.new(reservation_params)
     @reservation.customer_id = current_customer.id
     @reservation.save
     redirect_to reservation_path(@reservation)
