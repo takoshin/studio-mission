@@ -215,11 +215,11 @@ class ScrapersController < ApplicationController
       elsif reserve.option == "バレエバー6m"
         @option = 16
       elsif reserve.option == "リングライト"
-        @option = 20
-      elsif reserve.option == "カラーライト"
         @option = 21
-      elsif reserve.option == "フロント台"
+      elsif reserve.option == "カラーライト"
         @option = 22
+      elsif reserve.option == "フロント台"
+        @option = 23
       end
 
       @time_e = @time_s + 1
