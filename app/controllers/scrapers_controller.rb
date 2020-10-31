@@ -353,54 +353,56 @@ class ScrapersController < ApplicationController
           d.quit
         elsif reserve.count == "毎週(5週目なし)"
           sleep 1
-          i = 4
+          i = 5
           i.times{| num |
-            @week += 1
-            d.execute_script('window.scroll(1000,0);')
-            sleep 1
-            d.find_element(:class, 'fa-calendar').click
-            sleep 1
-            month.times{| num |
-              d.find_element(:class, 'picker__nav--next').click
-            }
-            d.find_element(:xpath, "/html/body/div[2]/div/div/div[1]/div[2]/div/div/div/div/div/table/tbody/tr[#{@week}]/td[#{@day}]/div").click
-            a = daily_s.delete("^0-9")
-            b = daily_e.delete("^0-9")
-            c = d.current_url.delete("^0-9")
-            if a <= c && c <= b
-              sleep 1
-              d.find_element(:xpath, "/html/body/div[2]/div/div/div[3]/ul[#{@room}]/li[#{@time_s}]/label").click
-              sleep 1
-              d.find_element(:xpath , "/html/body/div[2]/div/div/div[3]/ul[#{@room}]/li[#{@time_e}]/label").click
-              sleep 1
-              d.execute_script('window.scroll(0,1000);')
-              sleep 1
-              d.find_element(:xpath, '/html/body/div[2]/div/div/form/div[2]/ul/li/button').click
-              sleep 1
-              if reserve.option.blank? == false
-                select = Selenium::WebDriver::Support::Select.new(d.find_element(:name, "params[options][#{@option}]"))
-                select.select_by(:value, "#{reserve.number_of_option}")
-              end
-              sleep 1
-              d.find_element(:name, 'confirm').click
-              sleep 1
-              d.find_element(:class, 'btn-reserve').click
-              sleep 1
-              d.find_element(:xpath, '/html/body/div/div/div/div[3]/ul/li[3]/a').click
-              sleep 1
-            elsif b < c
-              d.quit
-              break
-            else
+            if @week <= 5
+              @week += 1
               d.execute_script('window.scroll(1000,0);')
               sleep 1
               d.find_element(:class, 'fa-calendar').click
               sleep 1
-              5.times{| num |
-                d.find_element(:class, 'picker__nav--prev').click
+              month.times{| num |
+                d.find_element(:class, 'picker__nav--next').click
               }
-              sleep 1
-              d.find_element(:xpath, "/html/body/div[2]/div/div/div[1]/div[2]/div/div/div/div/div/table/tbody/tr[2]/td[#{@day}]/div").click
+              d.find_element(:xpath, "/html/body/div[2]/div/div/div[1]/div[2]/div/div/div/div/div/table/tbody/tr[#{@week}]/td[#{@day}]/div").click
+              a = daily_s.delete("^0-9")
+              b = daily_e.delete("^0-9")
+              c = d.current_url.delete("^0-9")
+              if a <= c && c <= b
+                sleep 1
+                d.find_element(:xpath, "/html/body/div[2]/div/div/div[3]/ul[#{@room}]/li[#{@time_s}]/label").click
+                sleep 1
+                d.find_element(:xpath , "/html/body/div[2]/div/div/div[3]/ul[#{@room}]/li[#{@time_e}]/label").click
+                sleep 1
+                d.execute_script('window.scroll(0,1000);')
+                sleep 1
+                d.find_element(:xpath, '/html/body/div[2]/div/div/form/div[2]/ul/li/button').click
+                sleep 1
+                if reserve.option.blank? == false
+                  select = Selenium::WebDriver::Support::Select.new(d.find_element(:name, "params[options][#{@option}]"))
+                  select.select_by(:value, "#{reserve.number_of_option}")
+                end
+                sleep 1
+                d.find_element(:name, 'confirm').click
+                sleep 1
+                d.find_element(:class, 'btn-reserve').click
+                sleep 1
+                d.find_element(:xpath, '/html/body/div/div/div/div[3]/ul/li[3]/a').click
+                sleep 1
+              elsif b < c
+                d.quit
+                break
+              else
+                d.execute_script('window.scroll(1000,0);')
+                sleep 1
+                d.find_element(:class, 'fa-calendar').click
+                sleep 1
+                5.times{| num |
+                  d.find_element(:class, 'picker__nav--prev').click
+                }
+                sleep 1
+                d.find_element(:xpath, "/html/body/div[2]/div/div/div[1]/div[2]/div/div/div/div/div/table/tbody/tr[2]/td[#{@day}]/div").click
+              end
             end
           }
           puts "
