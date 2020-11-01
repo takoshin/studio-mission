@@ -184,6 +184,70 @@ class ScrapersController < ApplicationController
         @time_s = 31
       end
 
+      if reserve.time_e == "9:00"
+        @time_e = 0
+      elsif reserve.time_e == "9:30"
+        @time_e = 1
+      elsif reserve.time_e == "10:00"
+        @time_e = 2
+      elsif reserve.time_e == "10:30"
+        @time_e = 3
+      elsif reserve.time_e == "11:00"
+        @time_e = 4
+      elsif reserve.time_e == "11:30"
+        @time_e = 5
+      elsif reserve.time_e == "12:00"
+        @time_e = 6
+      elsif reserve.time_e == "12:30"
+        @time_e = 7
+      elsif reserve.time_e == "13:00"
+        @time_e = 8
+      elsif reserve.time_e == "13:30"
+        @time_e = 9
+      elsif reserve.time_e == "14:00"
+        @time_e = 10
+      elsif reserve.time_e == "14:30"
+        @time_e = 11
+      elsif reserve.time_e == "15:00"
+        @time_e = 12
+      elsif reserve.time_e == "15:30"
+        @time_e = 13
+      elsif reserve.time_e == "16:00"
+        @time_e = 14
+      elsif reserve.time_e == "16:30"
+        @time_e = 15
+      elsif reserve.time_e == "17:00"
+        @time_e = 16
+      elsif reserve.time_e == "17:30"
+        @time_e = 17
+      elsif reserve.time_e == "18:00"
+        @time_e = 18
+      elsif reserve.time_e == "18:30"
+        @time_e = 19
+      elsif reserve.time_e == "19:00"
+        @time_e = 20
+      elsif reserve.time_e == "19:30"
+        @time_e = 21
+      elsif reserve.time_e == "20:00"
+        @time_e = 22
+      elsif reserve.time_e == "20:30"
+        @time_e = 23
+      elsif reserve.time_e == "21:00"
+        @time_e = 24
+      elsif reserve.time_e == "21:30"
+        @time_e = 25
+      elsif reserve.time_e == "22:00"
+        @time_e = 26
+      elsif reserve.time_e == "22:30"
+        @time_e = 27
+      elsif reserve.time_e == "23:00"
+        @time_e = 28
+      elsif reserve.time_e == "23:30"
+        @time_e = 29
+      elsif reserve.time_e == "24:00"
+        @time_e = 30
+      end
+
       if reserve.option == "ブルーレイデッキ"
         @option = 2
       elsif reserve.option == "ワイヤレスマイク"
@@ -221,8 +285,6 @@ class ScrapersController < ApplicationController
       elsif reserve.option == "フロント台"
         @option = 23
       end
-
-      @time_e = @time_s + 1
 
       #--------------------------------------------------------------
       number = $number                        #会員番号
@@ -526,6 +588,7 @@ class ScrapersController < ApplicationController
           #{reserve.customer.number}:#{reserve.customer.customername} #{reserve.day_of_week}曜日 #{reserve.time_s}〜#{reserve.time_e}の予約が完了しました。
           -------------------------------------------------------------------------"
           sleep 10
+
           d.quit
         end
       rescue
