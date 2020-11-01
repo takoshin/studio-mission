@@ -355,7 +355,9 @@ class ScrapersController < ApplicationController
         -----------------"
       #-----------------------------------------------------------------------------------------------------------------------------------------
       #予約開始
+      try = 0
       begin
+        try += 1
         if reserve.count == "毎週"
           sleep 1
           i = 6
@@ -592,7 +594,8 @@ class ScrapersController < ApplicationController
           d.quit
         end
       rescue
-        d.quit
+        retry if try < 3
+        raise
       end
     end
   end
