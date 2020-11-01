@@ -235,7 +235,7 @@ class ScrapersController < ApplicationController
       @week = 0         #何周目か
       #--------------------------------------------------------------
       client = Selenium::WebDriver::Remote::Http::Default.new
-      client.read_timeout = 600
+      client.read_timeout = 60000
       chrome_capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
           chromeOptions: {
              args: ["--headless", "--no-sandbox"],
