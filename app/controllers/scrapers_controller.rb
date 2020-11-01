@@ -594,8 +594,7 @@ class ScrapersController < ApplicationController
           d.quit
         end
       rescue
-        retry if try < 3
-        raise
+        d.quit
       end
     end
   end
