@@ -296,7 +296,7 @@ class ScrapersController < ApplicationController
       begin
         if reserve.count == "毎週"
           sleep 1
-          i = 5
+          i = 6
           i.times{| num |
             @week += 1
             d.execute_script('window.scroll(1000,0);')
