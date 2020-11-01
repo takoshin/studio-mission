@@ -525,6 +525,7 @@ class ScrapersController < ApplicationController
           ------------------------------------------------------------------------
           #{reserve.customer.number}:#{reserve.customer.customername} #{reserve.day_of_week}曜日 #{reserve.time_s}〜#{reserve.time_e}の予約が完了しました。
           -------------------------------------------------------------------------"
+          sleep 10
           d.quit
         end
       rescue
