@@ -412,7 +412,11 @@ class ScrapersController < ApplicationController
           }
           puts "
           ------------------------------------------------------------------------
-          #{reserve.customer.number}:#{reserve.customer.customername} #{reserve.day_of_week}曜日 #{reserve.time_s}〜#{reserve.time_e}の予約が完了しました。
+          #{reserve.customer.number}:#{reserve.customer.customername} 
+          #{reserve.count}#{reserve.day_of_week}曜日 
+          #{reserve.time_s}〜#{reserve.time_e} 
+          #{reserve.option} #{reserve.number_of_option}
+          の予約が完了しました。
           -------------------------------------------------------------------------"
           d.quit
         elsif reserve.count == "毎週(5週目なし)"
@@ -533,7 +537,11 @@ class ScrapersController < ApplicationController
           }
           puts "
           ------------------------------------------------------------------------
-          #{reserve.customer.number}:#{reserve.customer.customername} #{reserve.day_of_week}曜日 #{reserve.time_s}〜#{reserve.time_e}の予約が完了しました。
+          #{reserve.customer.number}:#{reserve.customer.customername} 
+          #{reserve.count}#{reserve.day_of_week}曜日 
+          #{reserve.time_s}〜#{reserve.time_e} 
+          #{reserve.option} #{reserve.number_of_option}
+          の予約が完了しました。
           -------------------------------------------------------------------------"
           d.quit
         elsif reserve.count == "第2,4週"
@@ -591,7 +599,11 @@ class ScrapersController < ApplicationController
           }
           puts "
           ------------------------------------------------------------------------
-          #{reserve.customer.number}:#{reserve.customer.customername} #{reserve.day_of_week}曜日 #{reserve.time_s}〜#{reserve.time_e}の予約が完了しました。
+          #{reserve.customer.number}:#{reserve.customer.customername} 
+          #{reserve.count}#{reserve.day_of_week}曜日 
+          #{reserve.time_s}〜#{reserve.time_e} 
+          #{reserve.option} #{reserve.number_of_option}
+          の予約が完了しました。
           -------------------------------------------------------------------------"
           sleep 10
 
