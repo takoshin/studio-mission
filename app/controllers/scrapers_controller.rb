@@ -339,20 +339,20 @@ class ScrapersController < ApplicationController
       sleep 1
       d.find_element(:class, 'btn-login').click
       sleep 1
-      puts "
-        --------------------------------------
-        #{reserve.customer.customername}にログインしました！
-        --------------------------------------"
+      # puts "
+      #   --------------------------------------
+      #   #{reserve.customer.customername}にログインしました！
+      #   --------------------------------------"
       #予約画面に移動
       window = d.window_handles.last
       d.switch_to.window(window)
       d.execute_script('window.scroll(0,1000);')
       sleep 1
       d.find_element(:class, 'btn-reserve').click
-      puts "
-        -----------------
-        予約を開始します。
-        -----------------"
+      # puts "
+      #   -----------------
+      #   予約を開始します。
+      #   -----------------"
       #-----------------------------------------------------------------------------------------------------------------------------------------
       #予約開始
       try = 0
@@ -471,7 +471,11 @@ class ScrapersController < ApplicationController
           }
           puts "
           ------------------------------------------------------------------------
-          #{reserve.customer.number}:#{reserve.customer.customername} #{reserve.day_of_week}曜日 #{reserve.time_s}〜#{reserve.time_e}の予約が完了しました。
+          #{reserve.customer.number}:#{reserve.customer.customername} 
+          #{reserve.count}#{reserve.day_of_week}曜日 
+          #{reserve.time_s}〜#{reserve.time_e} 
+          #{reserve.option} #{reserve.number_of_option}
+          の予約が完了しました。
           -------------------------------------------------------------------------"
           d.quit
         elsif reserve.count == "第1,3,5週"
