@@ -27,7 +27,7 @@
     <nav class="navbar is-dark">
       <div class="navbar-brand">
         <%= link_to root_path, class: "navbar-item" do %>
-          <h1 class="title is-3, has-text-white" style="font-family: cursive;">studio mission </h1>
+          <h1 class="title is-3, has-text-white" style="font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "メイリオ", sans-serif;">studio mission </h1>
         <% end %>
         <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
           <span></span>
@@ -85,13 +85,13 @@
             <div class="navbar-item">
               <div class="field is-grouped">
                 <p class="control">
+                  <%= link_to "新規定期会員登録", new_customer_registration_path, class: "navbar-item button is-warning is-light" %>
+                </p>
+                <p class="control">
                   <%= link_to "定期会員", customers_path, class: " button is-warning is-light" %>
                 </p>
                 <p class="control">
                   <%= link_to "定期予約一覧", reservations_path, class: " button is-warning is-light" %>
-                </p>
-                <p class="control">
-                  <%= link_to "定期更新", scrapers_path, class: " button is-warning is-light" %>
                 </p>
               </div>
             </div>
