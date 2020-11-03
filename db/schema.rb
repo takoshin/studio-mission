@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 2020_09_17_164853) do
     t.string "time_e"
     t.string "option"
     t.string "number_of_option"
+    t.string "option1"
+    t.string "number_of_option1"
     t.string "count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
