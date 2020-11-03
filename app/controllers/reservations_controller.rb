@@ -40,7 +40,7 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:day_of_week, :room, :time_s, :time_e, :count, :option, :number_of_option)
+    params.require(:reservation).permit(:day_of_week, :room, :time_s, :time_e, :count, :option, :number_of_option, :option1, :number_of_option1)
   end
 
   def reservation_search_params

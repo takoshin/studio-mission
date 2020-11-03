@@ -47,7 +47,10 @@
                     <div class="body"><%= reservation.count %><%= reservation.day_of_week %>曜日</div>
                     <div class="body"><%= reservation.time_s %>〜<%= reservation.time_e %></div>
                     <div class="body">部屋:<%= reservation.room %></div>
-                    <div class="body">OP:<%= reservation.option %>×<%= reservation.number_of_option %></div>
+                    <% if reservation.option.blank? == false %>
+                      <div class="body">OP:<%= reservation.option %>×<%= reservation.number_of_option %></div>
+                      <div class="body">OP2:<%= reservation.option1 %>×<%= reservation.number_of_option1 %></div>
+                    <% end %>
                   </div>
                 </div>
 

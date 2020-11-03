@@ -286,6 +286,44 @@ class ScrapersController < ApplicationController
         @option = 23
       end
 
+      if reserve.option1 == "ブルーレイデッキ"
+        @option1 = 2
+      elsif reserve.option1 == "ワイヤレスマイク"
+        @option1 = 3
+      elsif reserve.option1 == "DJセット"
+        @option1 = 4
+      elsif reserve.option1 == "マイク"
+        @option1 = 5
+      elsif reserve.option1 == "長机"
+        @option1 = 6
+      elsif reserve.option1 == "椅子"
+        @option1 = 7
+      elsif reserve.option1 == "ホワイトボード"
+        @option1 = 8
+      elsif reserve.option1 == "譜面台"
+        @option1 = 9
+      elsif reserve.option1 == "マイクスタンド"
+        @option1 = 10
+      elsif reserve.option1 == "タップ板"
+        @option1 = 11
+      elsif reserve.option1 == "ヨガマット"
+        @option1 = 12
+      elsif reserve.option1 == "キーボード"
+        @option1 = 13
+      elsif reserve.option1 == "パーテーション"
+        @option1 = 14
+      elsif reserve.option1 == "バレエバー3m"
+        @option1 = 15
+      elsif reserve.option1 == "バレエバー6m"
+        @option1 = 16
+      elsif reserve.option1 == "リングライト"
+        @option1 = 21
+      elsif reserve.option1 == "カラーライト"
+        @option1 = 22
+      elsif reserve.option1 == "フロント台"
+        @option1 = 23
+      end
+
       #--------------------------------------------------------------
       number = $number                        #会員番号
       name = $name                  #名前
@@ -388,6 +426,10 @@ class ScrapersController < ApplicationController
                 select = Selenium::WebDriver::Support::Select.new(d.find_element(:name, "params[options][#{@option}]"))
                 select.select_by(:value, "#{reserve.number_of_option}")
               end
+              if reserve.option1.blank? == false
+                select = Selenium::WebDriver::Support::Select.new(d.find_element(:name, "params[options][#{@option1}]"))
+                select.select_by(:value, "#{reserve.number_of_option1}")
+              end
               sleep 1
               d.find_element(:name, 'confirm').click
               sleep 1
@@ -416,6 +458,7 @@ class ScrapersController < ApplicationController
           #{reserve.count}#{reserve.day_of_week}曜日 
           #{reserve.time_s}〜#{reserve.time_e} 
           #{reserve.option} #{reserve.number_of_option}
+          #{reserve.option1} #{reserve.number_of_option1}
           の予約が完了しました。
           -------------------------------------------------------------------------"
           d.quit
@@ -450,6 +493,10 @@ class ScrapersController < ApplicationController
                   select = Selenium::WebDriver::Support::Select.new(d.find_element(:name, "params[options][#{@option}]"))
                   select.select_by(:value, "#{reserve.number_of_option}")
                 end
+                if reserve.option1.blank? == false
+                  select = Selenium::WebDriver::Support::Select.new(d.find_element(:name, "params[options][#{@option1}]"))
+                  select.select_by(:value, "#{reserve.number_of_option1}")
+                end
                 sleep 1
                 d.find_element(:name, 'confirm').click
                 sleep 1
@@ -479,6 +526,7 @@ class ScrapersController < ApplicationController
           #{reserve.count}#{reserve.day_of_week}曜日 
           #{reserve.time_s}〜#{reserve.time_e} 
           #{reserve.option} #{reserve.number_of_option}
+          #{reserve.option1} #{reserve.number_of_option1}
           の予約が完了しました。
           -------------------------------------------------------------------------"
           d.quit
@@ -512,6 +560,10 @@ class ScrapersController < ApplicationController
                 select = Selenium::WebDriver::Support::Select.new(d.find_element(:name, "params[options][#{@option}]"))
                 select.select_by(:value, "#{reserve.number_of_option}")
               end
+              if reserve.option1.blank? == false
+                select = Selenium::WebDriver::Support::Select.new(d.find_element(:name, "params[options][#{@option1}]"))
+                select.select_by(:value, "#{reserve.number_of_option1}")
+              end
               sleep 1
               d.find_element(:name, 'confirm').click
               sleep 1
@@ -541,6 +593,7 @@ class ScrapersController < ApplicationController
           #{reserve.count}#{reserve.day_of_week}曜日 
           #{reserve.time_s}〜#{reserve.time_e} 
           #{reserve.option} #{reserve.number_of_option}
+          #{reserve.option1} #{reserve.number_of_option1}
           の予約が完了しました。
           -------------------------------------------------------------------------"
           d.quit
@@ -574,6 +627,10 @@ class ScrapersController < ApplicationController
                 select = Selenium::WebDriver::Support::Select.new(d.find_element(:name, "params[options][#{@option}]"))
                 select.select_by(:value, "#{reserve.number_of_option}")
               end
+              if reserve.option1.blank? == false
+                select = Selenium::WebDriver::Support::Select.new(d.find_element(:name, "params[options][#{@option1}]"))
+                select.select_by(:value, "#{reserve.number_of_option1}")
+              end
               sleep 1
               d.find_element(:name, 'confirm').click
               sleep 1
@@ -603,6 +660,7 @@ class ScrapersController < ApplicationController
           #{reserve.count}#{reserve.day_of_week}曜日 
           #{reserve.time_s}〜#{reserve.time_e} 
           #{reserve.option} #{reserve.number_of_option}
+          #{reserve.option1} #{reserve.number_of_option1}
           の予約が完了しました。
           -------------------------------------------------------------------------"
           sleep 10

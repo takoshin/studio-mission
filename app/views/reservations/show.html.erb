@@ -26,11 +26,15 @@
                 <tr>
                   <td>部屋番号: <%= @reservation.room %></td>
                 </tr>
+                <% if @reservation.option.blank? == false %>
+                  <tr>
+                    <td>OP:<%= @reservation.option %>×<%= @reservation.number_of_option %></td>
+                  </tr>
+                  <tr>
+                    <td>OP2:<%= @reservation.option1 %>×<%= @reservation.number_of_option1 %></td>
+                  </tr>
+                <% end %>
                 <tr>
-                  <td>OP:<%= @reservation.option %>×<%= @reservation.number_of_option %></td>
-                </tr>
-                <tr>
-                </tr>
                   <td><%= link_to "編集", edit_reservation_path(@reservation), class: "button is-primary" %></td>
                   <td>
                     <p class="control">

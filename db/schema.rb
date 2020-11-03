@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_17_164853) do
+ActiveRecord::Schema.define(version: 2020_11_03_070444) do
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -35,11 +35,11 @@ ActiveRecord::Schema.define(version: 2020_09_17_164853) do
     t.string "time_e"
     t.string "option"
     t.string "number_of_option"
-    t.string "option1"
-    t.string "number_of_option1"
     t.string "count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "option1"
+    t.string "number_of_option1"
   end
 
   create_table "scrapers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
