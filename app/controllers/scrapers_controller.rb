@@ -18,8 +18,8 @@ class ScrapersController < ApplicationController
     @reserves = Reservation.all
     @reserves.each do |reserve|
       require 'selenium-webdriver'
-      daily_s = "2021年05月01日" 
-      daily_e = "2021年05月31日"
+      daily_s = "2021年06月01日" 
+      daily_e = "2021年06月30日"
 
       i = reserve.day_of_week
       if i == "日"
