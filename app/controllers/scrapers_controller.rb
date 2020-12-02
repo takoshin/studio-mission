@@ -602,6 +602,9 @@ class ScrapersController < ApplicationController
           i = 4
           i.times{| num |
             @week += 2
+            if r = 1
+              @week += 1
+            end
             d.execute_script('window.scroll(1000,0);')
             sleep 1
             d.find_element(:class, 'fa-calendar').click
@@ -638,10 +641,13 @@ class ScrapersController < ApplicationController
               sleep 1
               d.find_element(:xpath, '/html/body/div/div/div/div[3]/ul/li[3]/a').click
               sleep 1
+              if r = 1
+                @week -= 1
+              end
             elsif b < c
               d.quit
               break
-            else
+            else 
               d.execute_script('window.scroll(1000,0);')
               sleep 1
               d.find_element(:class, 'fa-calendar').click
