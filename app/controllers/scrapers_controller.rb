@@ -18,8 +18,8 @@ class ScrapersController < ApplicationController
     @reserves = Reservation.all
     @reserves.each do |reserve|
       require 'selenium-webdriver'
-      daily_s = "2021年06月01日" 
-      daily_e = "2021年06月30日"
+      daily_s = "2021年09月01日" 
+      daily_e = "2021年09月30日"
 
       i = reserve.day_of_week
       if i == "日"
@@ -39,85 +39,85 @@ class ScrapersController < ApplicationController
       end
 
       if reserve.room ==  "U01"
-        @room = 1
-      elsif reserve.room == "U02"
         @room = 2
-      elsif reserve.room == "U04"
+      elsif reserve.room == "U02"
         @room = 3
-      elsif reserve.room == "U05"
+      elsif reserve.room == "U04"
         @room = 4
-      elsif reserve.room == "U06"
+      elsif reserve.room == "U05"
         @room = 5
-      elsif reserve.room == "U07"
+      elsif reserve.room == "U06"
         @room = 6
-      elsif reserve.room == "U09"
+      elsif reserve.room == "U07"
         @room = 7
-      elsif reserve.room == "U10"
+      elsif reserve.room == "U09"
         @room = 8
-      elsif reserve.room == "U11"
+      elsif reserve.room == "U10"
         @room = 9
-      elsif reserve.room == "703"
+      elsif reserve.room == "U11"
         @room = 10
-      elsif reserve.room == "704"
+      elsif reserve.room == "703"
         @room = 11
-      elsif reserve.room == "802"
+      elsif reserve.room == "704"
         @room = 12
-      elsif reserve.room == "803"
+      elsif reserve.room == "802"
         @room = 13
-      elsif reserve.room == "809"
+      elsif reserve.room == "803"
         @room = 14
-      elsif reserve.room == "810"
+      elsif reserve.room == "809"
         @room = 15
-      elsif reserve.room == "811"
+      elsif reserve.room == "810"
         @room = 16
-      elsif reserve.room == "814"
+      elsif reserve.room == "811"
         @room = 17
-      elsif reserve.room == "815"
+      elsif reserve.room == "814"
         @room = 18
-      elsif reserve.room == "903"
+      elsif reserve.room == "815"
         @room = 19
-      elsif reserve.room == "908"
+      elsif reserve.room == "903"
         @room = 20
-      elsif reserve.room == "909"
+      elsif reserve.room == "908"
         @room = 21
-      elsif reserve.room == "U08"
+      elsif reserve.room == "909"
         @room = 22
-      elsif reserve.room == "806"
+      elsif reserve.room == "U08"
         @room = 23
-      elsif reserve.room == "807"
+      elsif reserve.room == "806"
         @room = 24
-      elsif reserve.room == "813"
+      elsif reserve.room == "807"
         @room = 25
-      elsif reserve.room == "905"
+      elsif reserve.room == "813"
         @room = 26
-      elsif reserve.room == "U03"
+      elsif reserve.room == "905"
         @room = 27
-      elsif reserve.room == "808"
+      elsif reserve.room == "U03"
         @room = 28
-      elsif reserve.room == "812"
+      elsif reserve.room == "808"
         @room = 29
-      elsif reserve.room == "910"
+      elsif reserve.room == "812"
         @room = 30
-      elsif reserve.room == "804"
+      elsif reserve.room == "910"
         @room = 31
-      elsif reserve.room == "805"
+      elsif reserve.room == "804"
         @room = 32
-      elsif reserve.room == "902"
+      elsif reserve.room == "805"
         @room = 33
-      elsif reserve.room == "907"
+      elsif reserve.room == "902"
         @room = 34
-      elsif reserve.room == "801"
+      elsif reserve.room == "907"
         @room = 35
-      elsif reserve.room == "901"
+      elsif reserve.room == "801"
         @room = 36
-      elsif reserve.room == "904"
+      elsif reserve.room == "901"
         @room = 37
-      elsif reserve.room == "906"
+      elsif reserve.room == "904"
         @room = 38
-      elsif reserve.room == "702"
+      elsif reserve.room == "906"
         @room = 39
-      elsif reserve.room == "701"
+      elsif reserve.room == "702"
         @room = 40
+      elsif reserve.room == "701"
+        @room = 41
       end
 
       if reserve.time_s == "9:00"
@@ -338,7 +338,7 @@ class ScrapersController < ApplicationController
       client.read_timeout = 60000
       chrome_capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
           chromeOptions: {
-             args: ["--headless", "--no-sandbox"],
+            args: ["--no-sandbox"],
             w3c: false
           }
         )
@@ -435,7 +435,10 @@ class ScrapersController < ApplicationController
               sleep 1
               d.find_element(:class, 'btn-reserve').click
               sleep 1
-              d.find_element(:xpath, '/html/body/div/div/div/div[3]/ul/li[3]/a').click
+              agreement = d.find_element(:id, "agreement")
+              d.execute_script("arguments[0].click();",agreement)
+              sleep 1
+              d.find_element(:xpath, '/html/body/div/div/div/form/div[2]/ul/li[1]/button').click
               sleep 1
             elsif b < c
               d.quit
@@ -466,7 +469,7 @@ class ScrapersController < ApplicationController
           sleep 1
           i = 5
           i.times{| num |
-            if @week <= 5
+            if @week <= 4
               @week += 1
               d.execute_script('window.scroll(1000,0);')
               sleep 1
@@ -502,7 +505,10 @@ class ScrapersController < ApplicationController
                 sleep 1
                 d.find_element(:class, 'btn-reserve').click
                 sleep 1
-                d.find_element(:xpath, '/html/body/div/div/div/div[3]/ul/li[3]/a').click
+                agreement = d.find_element(:id, "agreement")
+                d.execute_script("arguments[0].click();",agreement)
+                sleep 1
+                d.find_element(:xpath, '/html/body/div/div/div/form/div[2]/ul/li[1]/button').click
                 sleep 1
               elsif b < c
                 d.quit
@@ -569,7 +575,10 @@ class ScrapersController < ApplicationController
               sleep 1
               d.find_element(:class, 'btn-reserve').click
               sleep 1
-              d.find_element(:xpath, '/html/body/div/div/div/div[3]/ul/li[3]/a').click
+              agreement = d.find_element(:id, "agreement")
+              d.execute_script("arguments[0].click();",agreement)
+              sleep 1
+              d.find_element(:xpath, '/html/body/div/div/div/form/div[2]/ul/li[1]/button').click
               sleep 1
               @week += 1
             elsif b < c
@@ -602,9 +611,9 @@ class ScrapersController < ApplicationController
           i = 4
           i.times{| num |
             @week += 2
-            if r = 1
-              @week += 1
-            end
+            #if r = 1
+            # @week += 1
+            #end
             d.execute_script('window.scroll(1000,0);')
             sleep 1
             d.find_element(:class, 'fa-calendar').click
@@ -639,11 +648,14 @@ class ScrapersController < ApplicationController
               sleep 1
               d.find_element(:class, 'btn-reserve').click
               sleep 1
-              d.find_element(:xpath, '/html/body/div/div/div/div[3]/ul/li[3]/a').click
+              agreement = d.find_element(:id, "agreement")
+              d.execute_script("arguments[0].click();",agreement)
               sleep 1
-              if r = 1
-                @week -= 1
-              end
+              d.find_element(:xpath, '/html/body/div/div/div/form/div[2]/ul/li[1]/button').click
+              sleep 1
+            # if r = 1
+              #  @week -= 1
+              #end
             elsif b < c
               d.quit
               break
