@@ -18,8 +18,8 @@ class ScrapersController < ApplicationController
     @reserves = Reservation.all
     @reserves.each do |reserve|
       require 'selenium-webdriver'
-      daily_s = "2021年09月01日" 
-      daily_e = "2021年09月30日"
+      daily_s = "2021年10月01日" 
+      daily_e = "2021年10月31日"
 
       i = reserve.day_of_week
       if i == "日"
@@ -248,80 +248,96 @@ class ScrapersController < ApplicationController
         @time_e = 30
       end
 
-      if reserve.option == "ブルーレイデッキ"
+      if reserve.option == "ヘッドセットマイク"
         @option = 2
       elsif reserve.option == "ワイヤレスマイク"
         @option = 3
-      elsif reserve.option == "DJセット"
+      elsif reserve.option == "	マイク"
         @option = 4
-      elsif reserve.option == "マイク"
+      elsif reserve.option == "ホワイトボード"
         @option = 5
       elsif reserve.option == "長机"
         @option = 6
       elsif reserve.option == "椅子"
         @option = 7
-      elsif reserve.option == "ホワイトボード"
-        @option = 8
-      elsif reserve.option == "譜面台"
-        @option = 9
-      elsif reserve.option == "マイクスタンド"
-        @option = 10
-      elsif reserve.option == "タップ板"
-        @option = 11
       elsif reserve.option == "ヨガマット"
-        @option = 12
-      elsif reserve.option == "キーボード"
-        @option = 13
-      elsif reserve.option == "パーテーション"
-        @option = 14
-      elsif reserve.option == "バレエバー3m"
-        @option = 15
-      elsif reserve.option == "バレエバー6m"
-        @option = 16
-      elsif reserve.option == "リングライト"
-        @option = 21
+        @option = 8
+      elsif reserve.option == "テープライト"
+        @option = 9
       elsif reserve.option == "カラーライト"
+        @option = 10
+      elsif reserve.option == "リングライト"
+        @option = 11
+      elsif reserve.option == "タオル"
+        @option = 12
+      elsif reserve.option == "シャンプーセット"
+        @option = 13
+      elsif reserve.option == "バレエバー3m"
+        @option = 14
+      elsif reserve.option == "バレエバー6m"
+        @option = 15
+      elsif reserve.option == "キーボード"
+        @option = 16
+      elsif reserve.option == "DJセット"
+        @option = 21
+      elsif reserve.option == "マイクスタンド"
         @option = 22
-      elsif reserve.option == "フロント台"
+      elsif reserve.option == "譜面台"
         @option = 23
+      elsif reserve.option == "ブルーレイデッキ"
+        @option = 24
+      elsif reserve.option == "タップ板"
+        @option = 25
+      elsif reserve.option == "パーテーション"
+        @option = 26
+      elsif reserve.option == "フロント台"
+        @option = 27
       end
 
-      if reserve.option1 == "ブルーレイデッキ"
+      if reserve.option == "ヘッドセットマイク"
         @option1 = 2
-      elsif reserve.option1 == "ワイヤレスマイク"
+      elsif reserve.option == "ワイヤレスマイク"
         @option1 = 3
-      elsif reserve.option1 == "DJセット"
+      elsif reserve.option == "	マイク"
         @option1 = 4
-      elsif reserve.option1 == "マイク"
+      elsif reserve.option == "ホワイトボード"
         @option1 = 5
-      elsif reserve.option1 == "長机"
+      elsif reserve.option == "長机"
         @option1 = 6
-      elsif reserve.option1 == "椅子"
+      elsif reserve.option == "椅子"
         @option1 = 7
-      elsif reserve.option1 == "ホワイトボード"
+      elsif reserve.option == "ヨガマット"
         @option1 = 8
-      elsif reserve.option1 == "譜面台"
+      elsif reserve.option == "テープライト"
         @option1 = 9
-      elsif reserve.option1 == "マイクスタンド"
+      elsif reserve.option == "カラーライト"
         @option1 = 10
-      elsif reserve.option1 == "タップ板"
+      elsif reserve.option == "リングライト"
         @option1 = 11
-      elsif reserve.option1 == "ヨガマット"
+      elsif reserve.option == "タオル"
         @option1 = 12
-      elsif reserve.option1 == "キーボード"
+      elsif reserve.option == "シャンプーセット"
         @option1 = 13
-      elsif reserve.option1 == "パーテーション"
+      elsif reserve.option == "バレエバー3m"
         @option1 = 14
-      elsif reserve.option1 == "バレエバー3m"
+      elsif reserve.option == "バレエバー6m"
         @option1 = 15
-      elsif reserve.option1 == "バレエバー6m"
+      elsif reserve.option == "キーボード"
         @option1 = 16
-      elsif reserve.option1 == "リングライト"
+      elsif reserve.option == "DJセット"
         @option1 = 21
-      elsif reserve.option1 == "カラーライト"
+      elsif reserve.option == "マイクスタンド"
         @option1 = 22
-      elsif reserve.option1 == "フロント台"
+      elsif reserve.option == "譜面台"
         @option1 = 23
+      elsif reserve.option == "ブルーレイデッキ"
+        @option1 = 24
+      elsif reserve.option == "タップ板"
+        @option1 = 25
+      elsif reserve.option == "パーテーション"
+        @option1 = 26
+      elsif reserve.option == "フロント台"
+        @option1 = 27
       end
 
       #--------------------------------------------------------------
@@ -440,6 +456,8 @@ class ScrapersController < ApplicationController
               sleep 1
               d.find_element(:xpath, '/html/body/div/div/div/form/div[2]/ul/li[1]/button').click
               sleep 1
+              d.find_element(:xpath, '/html/body/div/div/div/div[3]/ul/li[3]/a').click
+              sleep 1
             elsif b < c
               d.quit
               break
@@ -469,7 +487,7 @@ class ScrapersController < ApplicationController
           sleep 1
           i = 5
           i.times{| num |
-            if @week <= 4
+            if @week <= 5
               @week += 1
               d.execute_script('window.scroll(1000,0);')
               sleep 1
@@ -509,6 +527,8 @@ class ScrapersController < ApplicationController
                 d.execute_script("arguments[0].click();",agreement)
                 sleep 1
                 d.find_element(:xpath, '/html/body/div/div/div/form/div[2]/ul/li[1]/button').click
+                sleep 1
+                d.find_element(:xpath, '/html/body/div/div/div/div[3]/ul/li[3]/a').click
                 sleep 1
               elsif b < c
                 d.quit
@@ -579,6 +599,8 @@ class ScrapersController < ApplicationController
               d.execute_script("arguments[0].click();",agreement)
               sleep 1
               d.find_element(:xpath, '/html/body/div/div/div/form/div[2]/ul/li[1]/button').click
+              sleep 1
+              d.find_element(:xpath, '/html/body/div/div/div/div[3]/ul/li[3]/a').click
               sleep 1
               @week += 1
             elsif b < c
@@ -652,6 +674,8 @@ class ScrapersController < ApplicationController
               d.execute_script("arguments[0].click();",agreement)
               sleep 1
               d.find_element(:xpath, '/html/body/div/div/div/form/div[2]/ul/li[1]/button').click
+              sleep 1
+              d.find_element(:xpath, '/html/body/div/div/div/div[3]/ul/li[3]/a').click
               sleep 1
             # if r = 1
               #  @week -= 1
